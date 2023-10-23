@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SuiteLiverPool">
+
+    <test name="SearchInputTest">
+        <classes>
+            <class name="com.qaminds.tests.home.header.SearchInputTest"/>
+        </classes>
+    </test>
+
+</suite>

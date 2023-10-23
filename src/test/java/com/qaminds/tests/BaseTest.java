@@ -1,33 +1,57 @@
 package com.qaminds.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
+import utils.Reporter.ReporterManager;
+import utils.Reporter.ReporterTestListener;
 import utils.ScreenshotHelpers;
+import java.lang.reflect.Method;
 
 @Slf4j
+@Getter
+@Setter
+@Listeners(ReporterTestListener.class)
 public class BaseTest {
     WebDriver driver;
+    private boolean isSuite = false;
 
+    @BeforeSuite
+    public void beforeSuite(){
+        setSuite(true);
+        log.debug("Create the report html in the before Suite");
+        ReporterManager.createReportHTML();
+    }
 
-    @BeforeTest
-    public void beforeTest(){
+    @BeforeMethod
+    public void beforeMethod(Method method){
+        if(!isSuite()){
+            log.debug("Create the report html in the before Suite");
+            ReporterManager.createReportHTML();
+        }
+        ReporterManager.createTest(method.getName());
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         new ScreenshotHelpers(getDriver());
     }
 
-    @AfterTest
-    public void afterTest(){
-        driver.quit();
+    @AfterMethod
+    public void afterMethod(){
+        if(!isSuite()){
+            ReporterManager.createReportHTML();
+        }
+        log.info("Close browser");
+        getDriver().quit();
     }
 
-    public WebDriver getDriver(){
-        return driver;
+    @AfterSuite
+    public void afterSuite(){
+        ReporterManager.extentFlush();
     }
 
     public void navigateTo(String _url){
