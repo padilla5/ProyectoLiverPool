@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 public class FilterTest extends BaseTest {
 
-    @Test(testName = "validar el filtro de descuento de un producto", description = "Usar el filtro de descuento y verificar que los precios conincidan con el descuento")
+    @Test(testName = "validar el filtro de descuento de un producto", description = "Usar el filtro de descuento y verificar que los precios coincidan con el descuento")
     public void validaFiltroDescuento() throws InterruptedException {
 
         //Navega a liverpool
@@ -58,7 +58,7 @@ public class FilterTest extends BaseTest {
         ReporterManager.createLogTest().log(Status.PASS, MarkupHelper.createLabel("Step assert: Validar el filtro de descuento", ExtentColor.BLUE));
     }
 
-    @Test(testName = "validar el filtro de descuento de un producto", description = "Usar el filtro de descuento y verificar que los precios conincidan con el descuento")
+    @Test(testName = "validar el filtro de color de un producto", description = "Usar el filtro de color y verificar que el color coincida con los colores del producto")
     public void validaFiltroColor() throws InterruptedException {
 
         //Navega a liverpool
