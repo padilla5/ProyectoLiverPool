@@ -7,4 +7,10 @@
         </classes>
     </test>
 
+    <test name="FilterTest">
+        <classes>
+            <class name="com.qaminds.tests.Filters.FilterTest"/>
+        </classes>
+    </test>
+
 </suite>

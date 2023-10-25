@@ -31,7 +31,7 @@ public class ReporterTestListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         log.info("--------- Successful Test : {} ----------", result.getName());
-        ReporterManager.createLogTest().pass("Successful Test");
+        ReporterManager.createLogTest().log(Status.PASS,MarkupHelper.createLabel("Sucess",ExtentColor.GREEN));
     }
 
     @Override

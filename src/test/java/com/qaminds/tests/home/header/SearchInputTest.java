@@ -23,7 +23,6 @@ public class SearchInputTest extends BaseTest {
         navigateTo("www.liverpool.com.mx/tienda/home");
         //Carga la pagina principal
         HomePage hp = new HomePage(getDriver());
-
         ReporterManager.createLogTest().log(Status.INFO, MarkupHelper.createLabel("Step One: Navega a liverpool", ExtentColor.BLUE));
 
         //Click en el buscador del menu
@@ -41,22 +40,5 @@ public class SearchInputTest extends BaseTest {
         log.info("Step Four: Cliquea el boton buscar");
         SearchPage sp = hp.onClickMenuButtonBuscador();
         ReporterManager.createLogTest().log(Status.INFO, MarkupHelper.createLabel("Step Four: Cliquea el boton buscar", ExtentColor.BLUE));
-
-        //Clic descuento
-        log.info("Step Five: Cliquea el filtro de descuento");
-        sp.onClickOptionDescuento();
-        ReporterManager.createLogTest().log(Status.INFO, MarkupHelper.createLabel("Step Five: Cliquea el filtro de descuento", ExtentColor.BLUE));
-
-        Thread.sleep(3000);
-
-        //Valida si la marca esta visible
-        log.info("Step assert: Validar que la marca este visible");
-        assertThat(sp.isVisibleMarca1()).isTrue();
-        ReporterManager.createLogTest().log(Status.PASS, MarkupHelper.createLabel("Step assert: Validar que la marca este visible", ExtentColor.BLUE));
-
-        //Clic en la marca
-        log.info("Step Six: Cliquea la marca");
-        sp.onClickOptionMarca1();
-        ReporterManager.createLogTest().log(Status.INFO, MarkupHelper.createLabel("Step Six: Cliquea la marca", ExtentColor.BLUE));
     }
 }
