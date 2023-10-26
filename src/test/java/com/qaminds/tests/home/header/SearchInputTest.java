@@ -15,8 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 public class SearchInputTest extends BaseTest {
 
-    @Test(testName = "validar el filtro de LiverPool", description = "Usar el buscador de LiverPool, buscar un articulo y seleccionar algunos filtros")
-    public void validateFilters() throws InterruptedException {
+    @Test(testName = "validar el buscador de LiverPool", description = "Usar el buscador de LiverPool, buscar un articulo")
+    public void validarBuscador() throws InterruptedException {
 
         //Navega a liverpool
         log.info("Step One: Navega a liverpool");
